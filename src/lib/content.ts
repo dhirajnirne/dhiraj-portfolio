@@ -35,7 +35,10 @@ export const navItems: NavItem[] = [
 ];
 
 // Resume file lives in /public — served from site root.
-export const resumePath = "/Dhiraj-Nirne-Resume.pdf";
+// Next only rewrites basePath automatically for next/link and next/image —
+// a raw href to a public/ asset needs it prepended manually. Empty on Vercel
+// (root-served); set to /dhiraj-portfolio by the GitHub Pages workflow.
+export const resumePath = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/Dhiraj-Nirne-Resume.pdf`;
 
 // WhatsApp deep link (digits only, no +/spaces) + mailto for contact actions.
 export const whatsappUrl = "https://wa.me/917016010500";

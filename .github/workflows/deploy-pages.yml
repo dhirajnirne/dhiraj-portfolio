@@ -30,6 +30,7 @@ jobs:
       - run: npm run build
         env:
           DEPLOY_TARGET: gh-pages
+          NEXT_PUBLIC_BASE_PATH: /dhiraj-portfolio
 
       - uses: actions/configure-pages@v5
 
