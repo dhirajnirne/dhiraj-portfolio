@@ -9,13 +9,13 @@ interface MobileMenuProps {
   open: boolean;
   onClose: () => void;
   items: NavItem[];
-  activeId: string;
+  isActive: (href: string) => boolean;
 }
 
-export function MobileMenu({ open, onClose, items, activeId }: MobileMenuProps) {
+export function MobileMenu({ open, onClose, items, isActive }: MobileMenuProps) {
   return (
     <div
-      className={`fixed inset-0 z-50 sm:hidden ${open ? "pointer-events-auto" : "pointer-events-none"}`}
+      className={`fixed inset-0 z-50 md:hidden ${open ? "pointer-events-auto" : "pointer-events-none"}`}
       aria-hidden={!open}
     >
       <div
@@ -44,7 +44,7 @@ export function MobileMenu({ open, onClose, items, activeId }: MobileMenuProps) 
           <NavLink
             key={item.href}
             item={item}
-            active={activeId === item.href.slice(1)}
+            active={isActive(item.href)}
             onClick={onClose}
             className="py-3 text-base"
           />

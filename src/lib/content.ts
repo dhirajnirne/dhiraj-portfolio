@@ -26,12 +26,19 @@ export const contact: ContactInfo = {
 };
 
 export const navItems: NavItem[] = [
-  { label: "About", href: "#about" },
-  { label: "Work", href: "#work" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Work", href: "/work" },
+  { label: "Thinking", href: "/thinking" },
+  { label: "Experience", href: "/experience" },
+  { label: "Contact", href: "/contact" },
 ];
+
+// Resume file lives in /public — served from site root.
+export const resumePath = "/Dhiraj-Nirne-Resume.pdf";
+
+// WhatsApp deep link (digits only, no +/spaces) + mailto for contact actions.
+export const whatsappUrl = "https://wa.me/917016010500";
 
 export const heroSubhead =
   "Dhiraj Nirne — Product Manager with 3+ years turning ambiguous problems into shipped product across civic tech, AI, fintech-scale operations, and consumer apps. A software engineering background and hands-on delivery leadership mean I don't just define the roadmap — I can ship it.";

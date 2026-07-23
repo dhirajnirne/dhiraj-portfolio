@@ -3,6 +3,8 @@ import { Space_Grotesk, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { AmbientBackground } from "@/components/shared/AmbientBackground";
 import { CustomCursor } from "@/components/shared/CustomCursor";
+import { Nav } from "@/components/nav/Nav";
+import { Footer } from "@/components/shared/Footer";
 import "./globals.css";
 
 const displayFont = Space_Grotesk({
@@ -44,7 +46,12 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <AmbientBackground />
           <CustomCursor />
-          {children}
+          <a href="#main-content" className="skip-link">
+            Skip to main content
+          </a>
+          <Nav />
+          <main id="main-content">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

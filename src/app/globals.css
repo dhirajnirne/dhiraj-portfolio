@@ -4,72 +4,80 @@
 
 :root,
 .dark {
-  --bg: #0b0d12;
-  --surface: #12151b;
-  --surface-2: #1a1e26;
-  --border: #262b35;
+  --bg: #05060e;
+  --surface: #0c0e18;
+  --surface-2: #141726;
+  --border: #232838;
   --text: #f4f5f7;
-  --text-muted: #8b92a3;
-  --accent: #8b7cf6;
-  --accent-soft: rgba(139, 124, 246, 0.14);
-  --amber: #ff9b52;
-  --emerald: #3fd79a;
+  --text-muted: #949bb0;
+  --accent: #9d7bff;
+  --accent-soft: rgba(157, 123, 255, 0.16);
+  /* Neon secondary + tertiary accents for gradients, glows, category coding */
+  --accent-2: #2ee6d6;
+  --accent-2-soft: rgba(46, 230, 214, 0.14);
+  --accent-3: #ff5db1;
+  --accent-3-soft: rgba(255, 93, 177, 0.14);
+  --amber: #ffb454;
+  --emerald: #37e0a4;
 
-  /* Text color to place ON TOP of a solid --accent fill (buttons). White text on
-     the light-mode accent passes AA; white on THIS (lighter) dark-mode accent
-     does not (3.33:1) — near-black text does (5.84:1). Kept theme-aware rather
-     than hardcoded so solid-accent buttons stay accessible in both themes. */
-  --accent-contrast: #0b0d12;
+  /* Text color to place ON TOP of a solid --accent fill (buttons). */
+  --accent-contrast: #05060e;
 
   /* Pre-mixed translucent variants — Tailwind's bg-x/NN opacity modifier
      can't derive alpha from a hex custom property, so these are baked in. */
-  --nav-glass: rgba(11, 13, 18, 0.7);
-  --surface-muted: rgba(18, 21, 27, 0.4);
-  --surface-2-muted: rgba(26, 30, 38, 0.4);
-  --accent-muted-border: rgba(139, 124, 246, 0.5);
+  --nav-glass: rgba(6, 8, 16, 0.6);
+  --surface-muted: rgba(12, 14, 24, 0.5);
+  --surface-2-muted: rgba(20, 23, 38, 0.5);
+  --accent-muted-border: rgba(157, 123, 255, 0.5);
 
-  /* Glassmorphism surface — paired with backdrop-blur + backdrop-saturate on
-     the consuming element. Needs the AmbientBackground blobs behind it to read
-     as "glass" rather than just a dimmer solid card. */
-  --glass: rgba(22, 26, 34, 0.55);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-highlight: rgba(255, 255, 255, 0.06);
+  /* Glassmorphism surface — paired with backdrop-blur + backdrop-saturate. */
+  --glass: rgba(18, 21, 36, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-highlight: rgba(255, 255, 255, 0.07);
 
-  /* Ambient background blobs — pre-mixed rgba (see --nav-glass note above for
-     why: bg-accent/25 can't derive alpha from a hex custom property). */
-  --blob-accent: rgba(139, 124, 246, 0.25);
-  --blob-emerald: rgba(63, 215, 154, 0.15);
-  --blob-amber: rgba(255, 155, 82, 0.1);
+  /* Neon glow shadows */
+  --glow-accent: 0 0 0 1px rgba(157, 123, 255, 0.35), 0 8px 40px -8px rgba(157, 123, 255, 0.55);
+  --glow-cyan: 0 0 0 1px rgba(46, 230, 214, 0.35), 0 8px 40px -8px rgba(46, 230, 214, 0.5);
+
+  /* Ambient background blobs */
+  --blob-accent: rgba(157, 123, 255, 0.28);
+  --blob-cyan: rgba(46, 230, 214, 0.16);
+  --blob-pink: rgba(255, 93, 177, 0.14);
 }
 
 .light {
-  --bg: #f6f7f9;
+  --bg: #f5f6fb;
   --surface: #ffffff;
-  --surface-2: #eef0f4;
-  --border: #dfe3ea;
-  --text: #12151b;
-  --text-muted: #5b6273;
-  --accent: #6d4fe0;
-  --accent-soft: rgba(109, 79, 224, 0.1);
+  --surface-2: #edeef6;
+  --border: #dcdff0;
+  --text: #12141f;
+  --text-muted: #565d75;
+  --accent: #6d3ff0;
+  --accent-soft: rgba(109, 63, 240, 0.1);
+  --accent-2: #0891b2;
+  --accent-2-soft: rgba(8, 145, 178, 0.1);
+  --accent-3: #db2777;
+  --accent-3-soft: rgba(219, 39, 119, 0.1);
   --amber: #c9660a;
-  /* Deepened from #1f9a66 (3.58:1 on white — fails AA 4.5:1 for the "Result"
-     text label) to #178a56 (5.32:1) so it's readable as text, not just a dot. */
-  --emerald: #178a56;
+  --emerald: #0f9d63;
 
   --accent-contrast: #ffffff;
 
-  --nav-glass: rgba(246, 247, 249, 0.7);
-  --surface-muted: rgba(255, 255, 255, 0.4);
-  --surface-2-muted: rgba(238, 240, 244, 0.4);
-  --accent-muted-border: rgba(109, 79, 224, 0.5);
+  --nav-glass: rgba(245, 246, 251, 0.7);
+  --surface-muted: rgba(255, 255, 255, 0.5);
+  --surface-2-muted: rgba(237, 238, 246, 0.5);
+  --accent-muted-border: rgba(109, 63, 240, 0.5);
 
-  --glass: rgba(255, 255, 255, 0.55);
-  --glass-border: rgba(255, 255, 255, 0.7);
-  --glass-highlight: rgba(255, 255, 255, 0.5);
+  --glass: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --glass-highlight: rgba(255, 255, 255, 0.6);
 
-  --blob-accent: rgba(109, 79, 224, 0.18);
-  --blob-emerald: rgba(23, 138, 86, 0.12);
-  --blob-amber: rgba(201, 102, 10, 0.08);
+  --glow-accent: 0 0 0 1px rgba(109, 63, 240, 0.25), 0 12px 40px -12px rgba(109, 63, 240, 0.4);
+  --glow-cyan: 0 0 0 1px rgba(8, 145, 178, 0.25), 0 12px 40px -12px rgba(8, 145, 178, 0.35);
+
+  --blob-accent: rgba(109, 63, 240, 0.16);
+  --blob-cyan: rgba(8, 145, 178, 0.12);
+  --blob-pink: rgba(219, 39, 119, 0.1);
 }
 
 html {
@@ -190,6 +198,147 @@ body {
 
 .accordion-body > div {
   overflow: hidden;
+}
+
+/* ── Neon-glass design utilities ─────────────────────────────── */
+
+/* Glass card — frosted panel with neon edge highlight + hover lift/glow */
+.glass-card {
+  position: relative;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.25rem;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: inset 0 1px 0 0 var(--glass-highlight), 0 8px 30px -18px rgba(0, 0, 0, 0.7);
+  transition:
+    transform 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-muted-border);
+  box-shadow: inset 0 1px 0 0 var(--glass-highlight), var(--glow-accent);
+}
+
+/* Gradient neon text */
+.text-gradient {
+  background: linear-gradient(100deg, var(--accent) 0%, var(--accent-2) 55%, var(--accent-3) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Animated gradient text (slow hue drift) */
+.text-gradient-animated {
+  background: linear-gradient(
+    100deg,
+    var(--accent) 0%,
+    var(--accent-2) 30%,
+    var(--accent-3) 60%,
+    var(--accent) 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* Neon pill / tag */
+.neon-pill {
+  border: 1px solid var(--accent-muted-border);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* Conic gradient border ring (for avatars / feature cards) */
+.gradient-ring {
+  position: relative;
+}
+.gradient-ring::before {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    var(--accent),
+    var(--accent-2),
+    var(--accent-3),
+    var(--accent)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: spinBorder 6s linear infinite;
+  pointer-events: none;
+}
+
+/* Grid overlay used on page headers / hero */
+.grid-overlay {
+  background-image:
+    linear-gradient(to right, var(--glass-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--glass-border) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 75%);
+}
+
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes spinBorder {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes auroraDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(6%, -4%, 0) scale(1.1);
+  }
+  66% {
+    transform: translate3d(-5%, 5%, 0) scale(0.95);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.animate-floaty {
+  animation: floaty 6s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
