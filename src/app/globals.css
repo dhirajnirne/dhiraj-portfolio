@@ -1,26 +1,216 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root,
+.dark {
+  --bg: #0b0d12;
+  --surface: #12151b;
+  --surface-2: #1a1e26;
+  --border: #262b35;
+  --text: #f4f5f7;
+  --text-muted: #8b92a3;
+  --accent: #8b7cf6;
+  --accent-soft: rgba(139, 124, 246, 0.14);
+  --amber: #ff9b52;
+  --emerald: #3fd79a;
+
+  /* Text color to place ON TOP of a solid --accent fill (buttons). White text on
+     the light-mode accent passes AA; white on THIS (lighter) dark-mode accent
+     does not (3.33:1) — near-black text does (5.84:1). Kept theme-aware rather
+     than hardcoded so solid-accent buttons stay accessible in both themes. */
+  --accent-contrast: #0b0d12;
+
+  /* Pre-mixed translucent variants — Tailwind's bg-x/NN opacity modifier
+     can't derive alpha from a hex custom property, so these are baked in. */
+  --nav-glass: rgba(11, 13, 18, 0.7);
+  --surface-muted: rgba(18, 21, 27, 0.4);
+  --surface-2-muted: rgba(26, 30, 38, 0.4);
+  --accent-muted-border: rgba(139, 124, 246, 0.5);
+
+  /* Glassmorphism surface — paired with backdrop-blur + backdrop-saturate on
+     the consuming element. Needs the AmbientBackground blobs behind it to read
+     as "glass" rather than just a dimmer solid card. */
+  --glass: rgba(22, 26, 34, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.06);
+
+  /* Ambient background blobs — pre-mixed rgba (see --nav-glass note above for
+     why: bg-accent/25 can't derive alpha from a hex custom property). */
+  --blob-accent: rgba(139, 124, 246, 0.25);
+  --blob-emerald: rgba(63, 215, 154, 0.15);
+  --blob-amber: rgba(255, 155, 82, 0.1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.light {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #eef0f4;
+  --border: #dfe3ea;
+  --text: #12151b;
+  --text-muted: #5b6273;
+  --accent: #6d4fe0;
+  --accent-soft: rgba(109, 79, 224, 0.1);
+  --amber: #c9660a;
+  /* Deepened from #1f9a66 (3.58:1 on white — fails AA 4.5:1 for the "Result"
+     text label) to #178a56 (5.32:1) so it's readable as text, not just a dot. */
+  --emerald: #178a56;
+
+  --accent-contrast: #ffffff;
+
+  --nav-glass: rgba(246, 247, 249, 0.7);
+  --surface-muted: rgba(255, 255, 255, 0.4);
+  --surface-2-muted: rgba(238, 240, 244, 0.4);
+  --accent-muted-border: rgba(109, 79, 224, 0.5);
+
+  --glass: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.7);
+  --glass-highlight: rgba(255, 255, 255, 0.5);
+
+  --blob-accent: rgba(109, 79, 224, 0.18);
+  --blob-emerald: rgba(23, 138, 86, 0.12);
+  --blob-amber: rgba(201, 102, 10, 0.08);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+/* Custom cursor — position is driven by a rAF lerp loop (direct transform
+   writes, not React state), so only the discrete hover morph is a CSS
+   transition. Class only ever added on fine-pointer, non-reduced-motion
+   devices (see CustomCursor.tsx); media guard here is a defensive backstop. */
+@media (pointer: fine) {
+  .cursor-hidden,
+  .cursor-hidden * {
+    cursor: none !important;
+  }
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: var(--accent);
+  border: 1.5px solid var(--accent);
+  pointer-events: none;
+  will-change: transform;
+  transition:
+    width 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    height 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 300ms ease,
+    border-color 300ms ease;
+}
+
+.cursor-dot--hover {
+  width: 44px;
+  height: 44px;
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+/* Skip link — visually hidden until keyboard-focused */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  padding: 0.75rem 1.25rem;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  transition: top 200ms ease-out;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Status dot pulse ring */
+.status-dot {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--dot-color, var(--emerald));
+  flex-shrink: 0;
+}
+
+.status-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--dot-color, var(--emerald));
+  animation: statusPulse 2.2s ease-out infinite;
+}
+
+/* Scroll reveal primitive */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s var(--tw-ease, cubic-bezier(0.33, 1, 0.68, 1)),
+    transform 0.7s var(--tw-ease, cubic-bezier(0.33, 1, 0.68, 1));
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Accordion grid-rows technique */
+.accordion-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 320ms var(--tw-ease, cubic-bezier(0.33, 1, 0.68, 1));
+}
+
+.accordion-body.is-open {
+  grid-template-rows: 1fr;
+}
+
+.accordion-body > div {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .status-dot::after {
+    display: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }

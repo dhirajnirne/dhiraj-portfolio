@@ -1,0 +1,84 @@
+export type StatusKind = "shipped" | "live" | "active";
+
+export interface NavItem {
+  label: string;
+  href: string;
+}
+
+export interface ProgramBoardRow {
+  name: string;
+  category: string;
+  status: StatusKind;
+  note: string;
+}
+
+export interface StatItem {
+  value: number;
+  suffix: string;
+  label: string;
+}
+
+export interface CaseStudy {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  status: StatusKind;
+  problem: string;
+  role: string;
+  actions: string[];
+  result: string;
+  tags: string[];
+}
+
+export interface AlsoDeliveredItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  status: StatusKind;
+  summary: string;
+  tags: string[];
+}
+
+export interface AlsoBuiltItem {
+  id: string;
+  name: string;
+  role: string;
+  description: string;
+}
+
+export interface TimelineEntry {
+  role: string;
+  company: string;
+  location: string;
+  date: string;
+  bullets: string[];
+  highlights?: string[];
+}
+
+export interface SkillCategory {
+  title: string;
+  skills: string[];
+}
+
+export interface EducationItem {
+  degree: string;
+  institution: string;
+  location: string;
+  date: string;
+  detail: string;
+}
+
+export interface CertificationItem {
+  name: string;
+  issuer: string;
+  year: string;
+}
+
+export interface ContactInfo {
+  email: string;
+  phone: string;
+  location: string;
+  linkedin: string;
+}
