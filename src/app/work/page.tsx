@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/shared/Container";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
-import { CaseStudyAccordionCard } from "@/components/work/CaseStudyAccordionCard";
+import { CaseStudyCard } from "@/components/work/CaseStudyCard";
 import { AlsoDeliveredCard } from "@/components/work/AlsoDeliveredCard";
 import { AlsoBuiltCard } from "@/components/work/AlsoBuiltCard";
 import { caseStudies, alsoDelivered, alsoBuilt } from "@/lib/content";
@@ -24,7 +24,7 @@ export default function WorkPage() {
             solved
           </>
         }
-        subtitle="Ordered by the strongest evidence of product ownership first — delivery and technical engagements follow as supporting proof. Tap any card to open the full Problem / Role / Actions / Result."
+        subtitle="Ordered by the strongest evidence of product ownership first — delivery and technical engagements follow as supporting proof. Open any case study for the full Problem / Role / Actions / Result."
       />
 
       <section className="pb-16">
@@ -32,7 +32,7 @@ export default function WorkPage() {
           <div className="space-y-4">
             {caseStudies.map((cs, index) => (
               <ScrollReveal key={cs.id} index={index}>
-                <CaseStudyAccordionCard caseStudy={cs} />
+                <CaseStudyCard caseStudy={cs} />
               </ScrollReveal>
             ))}
           </div>

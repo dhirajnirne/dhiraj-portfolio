@@ -185,21 +185,6 @@ body {
   transform: translateY(0);
 }
 
-/* Accordion grid-rows technique */
-.accordion-body {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 320ms var(--tw-ease, cubic-bezier(0.33, 1, 0.68, 1));
-}
-
-.accordion-body.is-open {
-  grid-template-rows: 1fr;
-}
-
-.accordion-body > div {
-  overflow: hidden;
-}
-
 /* ── Neon-glass design utilities ─────────────────────────────── */
 
 /* Glass card — frosted panel with neon edge highlight + hover lift/glow */

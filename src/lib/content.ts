@@ -18,6 +18,12 @@ export const identity = {
   location: "Bengaluru, India",
 };
 
+// Canonical origin for SEO (metadataBase, sitemap, JSON-LD, canonical links).
+// The site also deploys to GitHub Pages as a secondary mirror, but Vercel is
+// the one authoritative origin search engines should index — single source
+// of truth so a future domain change only touches this one line.
+export const siteUrl = "https://portfolio-three-lime-57.vercel.app";
+
 export const contact: ContactInfo = {
   email: "dhirajnirne@gmail.com",
   phone: "+91 7016010500",
@@ -220,6 +226,18 @@ export const caseStudies: CaseStudy[] = [
     tags: ["Fintech", "SDK", "Security & QA"],
   },
 ];
+
+export function getCaseStudyBySlug(slug: string) {
+  return caseStudies.find((cs) => cs.id === slug);
+}
+
+export function getAdjacentCaseStudies(slug: string) {
+  const i = caseStudies.findIndex((cs) => cs.id === slug);
+  return {
+    prev: i > 0 ? caseStudies[i - 1] : null,
+    next: i >= 0 && i < caseStudies.length - 1 ? caseStudies[i + 1] : null,
+  };
+}
 
 // Tier 2 — "Also delivered": compact cards, real client/professional work below the full case studies
 export const alsoDelivered: AlsoDeliveredItem[] = [
