@@ -10,7 +10,7 @@ import { experience } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Experience — Dhiraj Nirne",
   description:
-    "Roles across Cumulations Technologies, Cognizant, and a founder stint — where the operating muscle behind the product decisions comes from.",
+    "Roles across Cumulations Technologies, Cognizant, and a founder stint — where the operating muscle behind the product decisions comes from. Education and certifications, including SAFe 6.0 POPM.",
 };
 
 export default function ExperiencePage() {

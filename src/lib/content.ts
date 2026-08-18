@@ -92,7 +92,7 @@ export const aboutHeadline =
 export const aboutParagraphs: string[] = [
   "I started as a software developer, shipping Flutter apps with REST integrations and payment gateways. That engineering grounding is still what separates my product decisions from guesswork — I can pressure-test a technical trade-off myself, not just take engineering's word for it.",
   "Across a dozen-plus products — civic platforms, AI tools, consumer apps, enterprise-scale migrations — I've owned the parts of the job that actually move a product forward: auditing what's broken, defining what to build next, running the delivery, and being accountable for what ships. On BBMP's E-Khata portal that meant cutting median time-on-platform from 40 minutes to 15 and clearing a 40,000-item user issue backlog down to around 200. On Majik Kids it meant owning the product from concept to 1,000+ organic downloads in two months.",
-  "The delivery and program work — running 8+ concurrent engagements at Cumulations Technologies, building the KPI and risk frameworks that keep every one of them visible — is the operating muscle behind the product decisions, not a separate job. It's why the products I own tend to actually ship.",
+  "The delivery and program work — running 8+ concurrent engagements at Cumulations Technologies, building the KPI and risk frameworks that keep every one of them visible — is the operating muscle behind the product decisions, not a separate job. It's why the products I own tend to actually ship. I'm SAFe 6.0 POPM certified, which puts a formal frame around that scaled-delivery side of the role — PI planning, ART-level dependency management, and value-stream prioritisation.",
 ];
 
 // Tier 1 — full accordion case studies (Problem / Role / Actions / Result)
@@ -418,6 +418,7 @@ export const skillCategories: SkillCategory[] = [
       "Project budgeting & cost control",
       "Resource & capacity planning",
       "Vendor coordination",
+      "SAFe (PI planning, ARTs)",
       "Agile at scale",
     ],
   },
@@ -462,6 +463,11 @@ export const education: EducationItem = {
 };
 
 export const certifications: CertificationItem[] = [
+  {
+    name: "SAFe 6.0 Product Owner / Product Manager (POPM)",
+    issuer: "Scaled Agile",
+    year: "2026",
+  },
   { name: "AI for Product Management", issuer: "Pendo", year: "2024" },
   {
     name: "DP-100: Microsoft Certified Data Scientist Associate",

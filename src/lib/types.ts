@@ -74,6 +74,9 @@ export interface CertificationItem {
   name: string;
   issuer: string;
   year: string;
+  // Set for credentials actively being pursued but not yet awarded — rendered
+  // as an "In progress" pill so the list never overstates what's been earned.
+  inProgress?: boolean;
 }
 
 export interface ContactInfo {
