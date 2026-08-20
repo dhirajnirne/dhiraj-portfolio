@@ -31,6 +31,20 @@ export interface CaseStudy {
   tags: string[];
 }
 
+export interface ProductThinkingCaseStudy {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  status: StatusKind;
+  user: string;
+  insight: string;
+  hypothesis: string;
+  prioritizationWhy: string;
+  prioritizationSkipped: string;
+  outcome: string;
+}
+
 export interface AlsoDeliveredItem {
   id: string;
   title: string;

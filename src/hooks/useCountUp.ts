@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useReducedMotion } from "./useReducedMotion";
 
 function easeOutCubic(t: number): number {
@@ -9,12 +9,10 @@ function easeOutCubic(t: number): number {
 
 export function useCountUp(target: number, start: boolean, duration = 1400): number {
   const [value, setValue] = useState(0);
-  const hasRun = useRef(false);
   const reducedMotion = useReducedMotion();
 
   useEffect(() => {
-    if (!start || hasRun.current || reducedMotion) return;
-    hasRun.current = true;
+    if (!start || reducedMotion) return;
 
     let frame: number;
     const startTime = performance.now();

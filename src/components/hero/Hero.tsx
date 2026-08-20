@@ -1,4 +1,4 @@
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, Award, MapPin } from "lucide-react";
 import { Container } from "@/components/shared/Container";
 import { CtaLink } from "@/components/shared/CtaLink";
 import { ResumeButtons } from "@/components/shared/ResumeButtons";
@@ -13,15 +13,21 @@ export function Hero() {
 
       <Container className="relative grid grid-cols-1 items-center gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
         <div>
-          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-glass-border bg-glass px-3 py-1.5 font-mono text-xs uppercase tracking-[0.18em] text-text-muted backdrop-blur-xl">
-            <span className="status-dot" />
-            <MapPin size={12} aria-hidden="true" />
-            {identity.location} · Product Manager · Open to roles
-          </p>
+          <div className="mb-5 flex flex-wrap items-center gap-3">
+            <p className="inline-flex items-center gap-2 rounded-full border border-glass-border bg-glass px-3 py-1.5 font-mono text-xs uppercase tracking-[0.18em] text-text-muted backdrop-blur-xl">
+              <span className="status-dot" />
+              <MapPin size={12} aria-hidden="true" />
+              {identity.location} · Technical Product Manager / Product Owner · Open to roles
+            </p>
+            <p className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent-soft px-3 py-1.5 font-mono text-xs uppercase tracking-[0.14em] text-accent">
+              <Award size={12} aria-hidden="true" />
+              Certified SAFe® 6 Product Owner/Product Manager
+            </p>
+          </div>
 
           <h1 className="font-display text-hero font-semibold leading-[1.04]">
-            <span className="text-text">I ship products </span>
-            <span className="text-gradient-animated">people actually use.</span>
+            <span className="text-text">I turn ambiguous problems into </span>
+            <span className="text-gradient-animated">products people use.</span>
           </h1>
 
           <p className="mt-6 max-w-xl text-base2 text-text-muted">{heroSubhead}</p>

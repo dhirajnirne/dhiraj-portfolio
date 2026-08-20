@@ -6,6 +6,7 @@ import type {
   ContactInfo,
   EducationItem,
   NavItem,
+  ProductThinkingCaseStudy,
   ProgramBoardRow,
   SkillCategory,
   StatItem,
@@ -14,7 +15,7 @@ import type {
 
 export const identity = {
   name: "Dhiraj Nirne",
-  positioningLine: "I ship products people actually use.",
+  positioningLine: "I turn ambiguous problems into products people use.",
   location: "Bengaluru, India",
 };
 
@@ -35,6 +36,7 @@ export const navItems: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Work", href: "/work" },
+  { label: "Product Thinking", href: "/product-thinking" },
   { label: "Thinking", href: "/thinking" },
   { label: "Experience", href: "/experience" },
   { label: "Contact", href: "/contact" },
@@ -50,10 +52,10 @@ export const resumePath = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/Dhiraj-Nir
 export const whatsappUrl = "https://wa.me/917016010500";
 
 export const heroSubhead =
-  "Dhiraj Nirne — Product Manager with 3+ years turning ambiguous problems into shipped product across civic tech, AI, fintech-scale operations, and consumer apps. A software engineering background and hands-on delivery leadership mean I don't just define the roadmap — I can ship it.";
+  "Technical Product Manager / Product Owner with a software engineering background, building AI, fintech, consumer, and enterprise products from discovery through launch.";
 
 export const stats: StatItem[] = [
-  { value: 17, suffix: "+", label: "products and platforms shipped" },
+  { value: 12, suffix: "+", label: "products and platforms shipped" },
   { value: 8, suffix: "+", label: "concurrent programs run at once" },
   { value: 95, suffix: "%", label: "client satisfaction score" },
   { value: 40, suffix: "%", label: "lift in program visibility" },
@@ -238,6 +240,61 @@ export function getAdjacentCaseStudies(slug: string) {
     next: i >= 0 && i < caseStudies.length - 1 ? caseStudies[i + 1] : null,
   };
 }
+
+// Product Thinking — same shipped products as the Work case studies above, told
+// through product reasoning (User/Insight/Hypothesis/Prioritization/Outcome)
+// rather than delivery mechanics. Bracketed fields are placeholders pending
+// confirmation of the actual product reasoning behind each decision.
+export const productThinkingCaseStudies: ProductThinkingCaseStudy[] = [
+  {
+    id: "tgi-sports",
+    title: "TGI Sports",
+    subtitle: "Real-time stadium advertising platform (internal codename: Vault) — UK",
+    category: "AdTech / Sports",
+    status: "shipped",
+    user:
+      "Broadcasters and ad-ops teams who needed to book and manage LED ad placements live, across multiple stadiums, during real sporting events — against fixed, non-negotiable game-time windows.",
+    insight: "[What I discovered about the gap in how ad inventory was sold versus how stadium hardware could actually display it]",
+    hypothesis:
+      "If ad-ops could target and swap placements by stadium geography and league rules from a single workflow, they could serve region-relevant ads across MLB venues without manual per-stadium coordination.",
+    prioritizationWhy:
+      "Geography-based targeting, MLB league onboarding, and multi-vendor LED integration were the three things standing between the platform and a live broadcast — everything else could wait until after the first games aired.",
+    prioritizationSkipped: "[What I deliberately didn't build in this phase]",
+    outcome:
+      "Platform went live during real sporting events, on schedule. The client renewed the contract on the strength of delivery.",
+  },
+  {
+    id: "hello-upi",
+    title: "Hello UPI / Tonetag",
+    subtitle: "In-car contactless payments — Tata Motors",
+    category: "Fintech",
+    status: "shipped",
+    user:
+      "Tata Motors connected-car drivers who needed to pay for fuel, tolls, or in-vehicle services without pulling out a phone banking app or a physical card.",
+    insight: "[What I discovered about how drivers actually wanted to pay from inside a vehicle]",
+    hypothesis:
+      "If payment happened through an in-car QR scan tied directly to UPI — instead of a separate app or card flow — drivers could pay faster and with less friction than conventional methods, without giving up on security.",
+    prioritizationWhy:
+      "The QR-scan workflow, SDK architecture, and encryption/fraud-prevention QA were prioritized first because payment speed and trust were the two things that would decide whether drivers adopted a brand-new in-car payment method at all.",
+    prioritizationSkipped: "[What I deliberately didn't build in this phase]",
+    outcome:
+      "15% reduction in average transaction time versus conventional payment methods, with fraud-prevention mechanisms validated before launch.",
+  },
+  {
+    id: "majik-kids",
+    title: "Majik Kids",
+    subtitle: "Audio stories app for kids and parents",
+    category: "Consumer",
+    status: "live",
+    user:
+      "Parents looking for a simple, engaging audio-story experience to hand to their kids — without a cluttered or ad-heavy app getting in the way.",
+    insight: "[What I discovered about how parents and kids actually used story apps together]",
+    hypothesis: "[What I believed would improve the experience — the specific bet behind the product]",
+    prioritizationWhy: "[Why these changes were built first, out of everything possible for a zero-to-one consumer app]",
+    prioritizationSkipped: "[What I deliberately didn't build in this phase]",
+    outcome: "Organic growth to 1,000+ downloads across both app stores within two months of launch.",
+  },
+];
 
 // Tier 2 — "Also delivered": compact cards, real client/professional work below the full case studies
 export const alsoDelivered: AlsoDeliveredItem[] = [
